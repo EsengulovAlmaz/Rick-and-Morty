@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Creepster, Patrick_Hand } from "next/font/google";
+import { Creepster } from "next/font/google";
 
 import "./globals.css";
 import Header from "@/components/Header";
@@ -8,12 +8,6 @@ const creepster = Creepster({
   variable: "--font-creepster",
   subsets: ["latin"],
   weight: "400",
-});
-
-const patrickHand = Patrick_Hand({
-  weight: "400",
-  variable: "--font-patrick-hand",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${creepster.variable} ${patrickHand.variable} antialiased`}
+        className={`${creepster.variable} antialiased`}
       >
         <Header />
         {children}
