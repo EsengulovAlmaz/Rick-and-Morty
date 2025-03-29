@@ -3,7 +3,10 @@ export interface Location {
   url: string
 }
 
-export type Origin = Location
+export interface Origin {
+  name: string
+  url: string
+}
 
 export interface CharacterItem {
   id: number
@@ -20,14 +23,14 @@ export interface CharacterItem {
   url: string
 }
 
-interface Info {
-  count: number;
-  pages: number;
-  next: string | null;
-  prev: string | null;
+export interface Info {
+  count: number
+  pages: number
+  next: string | null
+  prev: string | null
 }
 
 export interface CharacterResponse {
-  info: Info;
-  results: CharacterItem[];
+  info: Info
+  results: CharacterItem[]
 }

@@ -12,7 +12,7 @@ const creepster = Creepster({
 
 export const metadata: Metadata = {
   title: "Rick and Morty",
-  description: "Поиск персонажей Rick and Morty",
+  description: "Rick and Morty Character Search",
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="en">
       <body
         className={`${creepster.variable} antialiased`}
       >

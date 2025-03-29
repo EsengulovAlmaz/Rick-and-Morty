@@ -18,8 +18,17 @@ export const useFetch = <T>(url: string): FetchResponse<T> => {
     setLoading(true);
     setError(null);
 
+    const queryParams = params ? new URLSearchParams(params).toString() : "";
+    const cacheKey = `${url}?${queryParams}`;
+
+    const cachedData = localStorage.getItem(cacheKey);
+    if (cachedData) {
+      setData(JSON.parse(cachedData));
+      setLoading(false);
+      return;
+    }
+
     try {
-      const queryParams = params ? new URLSearchParams(params).toString() : "";
       const response = await fetch(`${API_BASE_URL}${url}${queryParams ? `?${queryParams}` : ""}`);
 
       if (!response.ok) {
@@ -27,7 +36,9 @@ export const useFetch = <T>(url: string): FetchResponse<T> => {
       }
 
       const data = await response.json();
-      
+
+      localStorage.setItem(cacheKey, JSON.stringify(data));
+
       setData(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error has occurred");
