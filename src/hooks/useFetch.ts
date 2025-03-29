@@ -28,7 +28,7 @@ export const useFetch = <T>(url: string): FetchResponse<T> => {
 
       const data = await response.json();
       
-      setData(data.results);
+      setData(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error has occurred");
       setData(null);

@@ -8,8 +8,10 @@ const Header = () => (
     <Image 
       src={header_icon}
       alt="icon"
-      width={70}
-      height={70}
+      width={50}
+      height={50}
+      className="w-auto h-auto"
+      priority
     />
 
     <h1 className="font-bold text-3xl sm:text-5xl">

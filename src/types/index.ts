@@ -19,3 +19,15 @@ export interface CharacterItem {
   type: string
   url: string
 }
+
+interface Info {
+  count: number;
+  pages: number;
+  next: string | null;
+  prev: string | null;
+}
+
+export interface CharacterResponse {
+  info: Info;
+  results: CharacterItem[];
+}
