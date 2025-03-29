@@ -11,32 +11,41 @@ import { CharacterItem } from "@/types";
 export default function Home() {
   const [searchValue, setSearchValue] = React.useState<string>("");
   const {
-    fetchData, 
     data,
     error,
     loading,
+    fetchData, 
   } = useFetch<CharacterItem[]>("/character");
 
-  const onInputChange = (value: string) => {
-    setSearchValue(value);
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
   };
 
-  const onClick = () => fetchData({"name": searchValue});
+  const onClickSearch = () => {
+    if(searchValue) fetchData({name: searchValue});
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onClickSearch();
+    }
+  };
 
   return (
-    <div className="px-8">
+    <main className="px-8 py-4">
       <SearchInput
+        onClick={onClickSearch}
         onInputChange={onInputChange}
-        onClick={onClick}
+        handleKeyDown={handleKeyDown}
       />
 
       {loading && <Loading />}
 
-      {error && <ErrorComponent message="Nothing found!"/>}
+      {error && <ErrorComponent message="Nothing found!" />}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {data?.map(item => <CharacterCard key={item.id} {...item} />)}
+        {!loading && data?.map(item => <CharacterCard key={item.id} {...item} />)}
       </div>
-    </div>
+    </main>
   );
 }
