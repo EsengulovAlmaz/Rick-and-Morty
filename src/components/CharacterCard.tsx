@@ -10,7 +10,7 @@ const CharacterCard: React.FC<CharacterItem> = ({
   species,
   location,
 }) => (
-  <div className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200">
+  <article className="max-full rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200">
     <Image 
       src={image} 
       alt={name} 
@@ -33,7 +33,7 @@ const CharacterCard: React.FC<CharacterItem> = ({
         Location: {location.name}
       </p>
     </div>
-  </div>
+  </article>
 );
 
 export default CharacterCard;

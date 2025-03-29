@@ -12,7 +12,7 @@ const Header = () => (
       height={70}
     />
 
-    <h1 className="font-bold text-5xl">
+    <h1 className="font-bold text-3xl sm:text-5xl">
       Rick and Morty
     </h1>
   </header>
